@@ -13,8 +13,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
-local GameConfig = require(ReplicatedStorage:FindFirstChild("GameConfig"))
-local ZoneData = require(ReplicatedStorage:FindFirstChild("ZoneData"))
+local GameConfig = require(ReplicatedStorage:WaitForChild("GameConfig"))
+local ZoneData = require(ReplicatedStorage:WaitForChild("ZoneData"))
 
 local DungeonHUD = {}
 

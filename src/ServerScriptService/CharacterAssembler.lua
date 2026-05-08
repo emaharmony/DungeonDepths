@@ -6,8 +6,9 @@
 ]]
 
 local ServerScriptService = game:GetService("ServerScriptService")
-local GameConfig = require(game:GetService("ReplicatedStorage"):FindFirstChild("GameConfig"))
-local SegmentData = require(game:GetService("ReplicatedStorage"):FindFirstChild("SegmentData"))
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local GameConfig = require(ReplicatedStorage:WaitForChild("GameConfig"))
+local SegmentData = require(ReplicatedStorage:WaitForChild("SegmentData"))
 
 local CharacterAssembler = {}
 

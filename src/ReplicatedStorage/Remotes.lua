@@ -10,37 +10,31 @@ local Remotes = {}
 Remotes.FOLDER_NAME = "DungeonRemotes"
 
 function Remotes.Setup()
-    local folder = Instance.new("Folder")
-    folder.Name = Remotes.FOLDER_NAME
-    folder.Parent = ReplicatedStorage
+    local folder = Remotes.GetFolder()
+    if not folder then
+        folder = Instance.new("Folder")
+        folder.Name = Remotes.FOLDER_NAME
+        folder.Parent = ReplicatedStorage
+    end
 
-    local swapPart = Instance.new("RemoteEvent")
-    swapPart.Name = "SwapPart"
-    swapPart.Parent = folder
+    local function ensureRemote(name: string, className: string)
+        local existing = folder:FindFirstChild(name)
+        if existing then
+            return existing
+        end
+        local remote = Instance.new(className)
+        remote.Name = name
+        remote.Parent = folder
+        return remote
+    end
 
-    local progressFloor = Instance.new("RemoteEvent")
-    progressFloor.Name = "ProgressFloor"
-    progressFloor.Parent = folder
-
-    local requestSegments = Instance.new("RemoteFunction")
-    requestSegments.Name = "RequestSegments"
-    requestSegments.Parent = folder
-
-    local clientReady = Instance.new("RemoteEvent")
-    clientReady.Name = "ClientReady"
-    clientReady.Parent = folder
-
-    local combatEvent = Instance.new("RemoteEvent")
-    combatEvent.Name = "CombatEvent"
-    combatEvent.Parent = folder
-
-    local floorEvent = Instance.new("RemoteEvent")
-    floorEvent.Name = "FloorEvent"
-    floorEvent.Parent = folder
-
-    local segmentPickup = Instance.new("RemoteEvent")
-    segmentPickup.Name = "SegmentPickup"
-    segmentPickup.Parent = folder
+    ensureRemote("SwapPart", "RemoteEvent")
+    ensureRemote("ProgressFloor", "RemoteEvent")
+    ensureRemote("RequestSegments", "RemoteFunction")
+    ensureRemote("ClientReady", "RemoteEvent")
+    ensureRemote("CombatEvent", "RemoteEvent")
+    ensureRemote("FloorEvent", "RemoteEvent")
+    ensureRemote("SegmentPickup", "RemoteEvent")
 end
 
 function Remotes.GetFolder(): Folder?

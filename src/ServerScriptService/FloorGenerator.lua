@@ -8,8 +8,9 @@
 ]]
 
 local ServerScriptService = game:GetService("ServerScriptService")
-local GameConfig = require(game:GetService("ReplicatedStorage"):FindFirstChild("GameConfig"))
-local ZoneData = require(game:GetService("ReplicatedStorage"):FindFirstChild("ZoneData"))
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local GameConfig = require(ReplicatedStorage:WaitForChild("GameConfig"))
+local ZoneData = require(ReplicatedStorage:WaitForChild("ZoneData"))
 
 local FloorGenerator = {}
 

@@ -13,8 +13,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
-local GameConfig = require(ReplicatedStorage:FindFirstChild("GameConfig"))
-local SegmentData = require(ReplicatedStorage:FindFirstChild("SegmentData"))
+local GameConfig = require(ReplicatedStorage:WaitForChild("GameConfig"))
+local SegmentData = require(ReplicatedStorage:WaitForChild("SegmentData"))
 
 local PartSwapUI = {}
 
