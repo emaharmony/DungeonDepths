@@ -9,9 +9,10 @@
 ]]
 
 local ServerScriptService = game:GetService("ServerScriptService")
-local GameConfig = require(game:GetService("ReplicatedStorage"):FindFirstChild("GameConfig"))
-local SegmentData = require(game:GetService("ReplicatedStorage"):FindFirstChild("SegmentData"))
-local CharacterAssembler = require(ServerScriptService:FindFirstChild("CharacterAssembler"))
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local GameConfig = require(ReplicatedStorage:WaitForChild("GameConfig"))
+local SegmentData = require(ReplicatedStorage:WaitForChild("SegmentData"))
+local CharacterAssembler = require(ServerScriptService:WaitForChild("CharacterAssembler"))
 
 local CombatEngine = {}
 
@@ -89,7 +90,7 @@ function CombatEngine.Start(player: Player, floor: number)
             local rootPart = character:FindFirstChild("HumanoidRootPart") :: BasePart
             if not rootPart then break end
 
-            for _, enemy in workspace:GetChildren() do
+            for _, enemy in workspace:GetDescendants() do
                 if enemy:IsA("Model") and enemy.Name:find("Enemy_") then
                     local enemyRoot = enemy:FindFirstChild("HumanoidRootPart") :: BasePart
                     local enemyHumanoid = enemy:FindFirstChild("Humanoid") :: Humanoid
@@ -128,7 +129,7 @@ function CombatEngine.Start(player: Player, floor: number)
     -- Enemy attack loop
     task.spawn(function()
         while activeLoops[player.UserId] and humanoid and humanoid.Health > 0 do
-            for _, enemy in workspace:GetChildren() do
+            for _, enemy in workspace:GetDescendants() do
                 if enemy:IsA("Model") and enemy.Name:find("Enemy_") then
                     local enemyRoot = enemy:FindFirstChild("HumanoidRootPart") :: BasePart
                     local rootPart = character:FindFirstChild("HumanoidRootPart") :: BasePart
