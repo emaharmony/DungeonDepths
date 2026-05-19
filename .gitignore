@@ -1,0 +1,42 @@
+# Roblox build artifacts
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxs
+*.bak
+
+# Secrets
+secrets/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+credentials.json
+secrets.json
+tokens.json
+
+# Assets (large binaries)
+assets/meshes/
+
+# Tools state
+tools/.roblox-upload-state.json
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Database
+*.db
+*.db-wal
+*.db-shm
